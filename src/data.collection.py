@@ -21,7 +21,7 @@ if response.status_code == 200:
         scraped_data.append({"review_text": review_text})
     
     # Specify the CSV file path
-    csv_file = "movie_reviews.csv"
+    csv_file = "data/movie_reviews.csv"
 
     # Create or open the CSV file for writing
     with open(csv_file, mode="w", newline="", encoding="utf-8") as file:
