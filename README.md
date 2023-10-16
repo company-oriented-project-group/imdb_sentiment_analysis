@@ -59,7 +59,7 @@ Open your web browser and navigate to http://localhost:5000 to start using the a
 
 ## Usage
 
-The application provides some interesting statistics based on a subset of 1000 film reviews obtained from IMDB. Additionally, it offers a user-friendly and intuitive interface for analyzing film reviews. To analyze a text, simply input it into the provided text box and click the "Analyze" button. The system will then generate the sentiment analysis result.
+The application provides some interesting statistics based on a subset of 500 film reviews obtained from IMDB. Additionally, it offers a user-friendly and intuitive interface for analyzing film reviews. To analyze a text, simply input it into the provided text box and click the "Analyze" button. The system will then generate the sentiment analysis result.
 
 ## Data
 
