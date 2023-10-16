@@ -1,4 +1,4 @@
-# Film Review Sentiment Analysis Project
+# IMDB Sentiment Analysis Project
 
 ![Project Image](project_image.png)
 
