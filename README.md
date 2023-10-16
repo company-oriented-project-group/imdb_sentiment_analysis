@@ -11,7 +11,7 @@
 - [Data](#data)
 - [Model](#model)
 - [Results](#results)
-- [Contributing](#contributing)
+- [Contributors](#contributors)
 - [License](#license)
 
 ## Introduction
