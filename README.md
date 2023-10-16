@@ -22,7 +22,7 @@ Welcome to the IMDB Sentiment Analysis Project! This project is designed to perf
 
 Before diving into the details, check out our live demo to see this project in action:
 
-[Demo](https://example-demo.com)
+[Demo](https://example.com)
 
 ## Features
 
