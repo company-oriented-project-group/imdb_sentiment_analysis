@@ -18,8 +18,11 @@ driver = webdriver.Chrome()
 # Send an HTTP GET request to the IMDb page
 driver.get(url)
 
-# Find the "Load More" button and click it until you have reviews
-while len(driver.find_elements(By.ID, 'load-more-trigger')) > 0:
+# Find the "Load More" button and click it until you have 500 reviews
+max_reviews = 500
+scraped_data = []
+
+while len(scraped_data) < max_reviews:
     load_more_button = driver.find_element(By.ID, 'load-more-trigger')
     
     # Wait until the button is clickable
@@ -35,20 +38,24 @@ while len(driver.find_elements(By.ID, 'load-more-trigger')) > 0:
     # Wait for the new reviews to load 
     driver.implicitly_wait(5)
 
-# Once all reviews are loaded, parse the page using BeautifulSoup
-soup = BeautifulSoup(driver.page_source, 'html.parser')
+    # Once all reviews are loaded, parse the page using BeautifulSoup
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
+    review_elements = soup.find_all('div', class_='text show-more__control')
+    for review_element in review_elements:
+        review_text = review_element.get_text(strip=True)
+        scraped_data.append({"review_text": review_text})
 
-scraped_data = []
-review_elements = soup.find_all('div', class_='text show-more__control')
-for review_element in review_elements:
-    review_text = review_element.get_text(strip=True)
-    scraped_data.append({"review_text": review_text})
+    if len(scraped_data) >= max_reviews:
+        break
 
 # Close the WebDriver
 driver.quit()
 
+# Only keep the first 500 reviews
+scraped_data = scraped_data[:max_reviews]
+
 # Specify the CSV file path
-csv_file = "data/movie_reviews.csv"
+csv_file = "movie_reviews.csv"
 
 # Create or open the CSV file for writing
 with open(csv_file, mode="w", newline="", encoding="utf-8") as file:
@@ -59,8 +66,7 @@ with open(csv_file, mode="w", newline="", encoding="utf-8") as file:
     writer.writerow(["review_text"])
 
     # Write the data rows
-for data in scraped_data:
-    writer.writerow([data["review_text"]])
-
+    for data in scraped_data:
+        writer.writerow([data["review_text"]])
 
 print(f"Scraped {len(scraped_data)} reviews and saved to {csv_file}")
