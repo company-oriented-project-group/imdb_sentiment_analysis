@@ -55,7 +55,7 @@ driver.quit()
 scraped_data = scraped_data[:max_reviews]
 
 # Specify the CSV file path
-csv_file = "movie_reviews.csv"
+csv_file = "data/movie_reviews.csv"
 
 # Create or open the CSV file for writing
 with open(csv_file, mode="w", newline="", encoding="utf-8") as file:
