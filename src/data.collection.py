@@ -1,4 +1,5 @@
 import csv
+import re
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -35,7 +36,7 @@ while len(scraped_data) < max_reviews:
     # Click the button
     load_more_button.click()
 
-    # Wait for the new reviews to load 
+    # Wait for the new reviews to load (you might need to adjust the time)
     driver.implicitly_wait(5)
 
     # Once all reviews are loaded, parse the page using BeautifulSoup
@@ -50,6 +51,30 @@ while len(scraped_data) < max_reviews:
 
 # Close the WebDriver
 driver.quit()
+
+# Data preprocessing
+for i in range(len(scraped_data)):
+    review_text = scraped_data[i]["review_text"]
+    
+    # Remove HTML tags
+    review_text = re.sub(r'<.*?>', '', review_text)
+    
+    # Remove punctuation and special characters
+    review_text = re.sub(r'[^\w\s]', ' ', review_text)
+    
+    # Convert to lowercase
+    review_text = review_text.lower()
+    
+    # Strip leading and trailing whitespace
+    review_text = review_text.strip()
+    
+    scraped_data[i]["review_text"] = review_text
+
+# Deduplicate reviews
+scraped_data = [dict(t) for t in {tuple(d.items()) for d in scraped_data}]
+
+# Handle missing data
+scraped_data = [review for review in scraped_data if review["review_text"]]
 
 # Only keep the first 500 reviews
 scraped_data = scraped_data[:max_reviews]
@@ -69,4 +94,4 @@ with open(csv_file, mode="w", newline="", encoding="utf-8") as file:
     for data in scraped_data:
         writer.writerow([data["review_text"]])
 
-print(f"Scraped {len(scraped_data)} reviews and saved to {csv_file}")
+print(f"Scraped and cleaned {len(scraped_data)} reviews, and saved to {csv_file}")
