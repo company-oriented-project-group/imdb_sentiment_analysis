@@ -1,5 +1,6 @@
 import csv
 import re
+import pandas as pd 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -27,7 +28,7 @@ while len(scraped_data) < max_reviews:
     load_more_button = driver.find_element(By.ID, 'load-more-trigger')
     
     # Wait until the button is clickable
-    wait = WebDriverWait(driver, 10)  # Adjust the timeout as needed
+    wait = WebDriverWait(driver, 10)  
     wait.until(EC.element_to_be_clickable((By.ID, 'load-more-trigger')))
     
     # Scroll the button into view
@@ -36,7 +37,7 @@ while len(scraped_data) < max_reviews:
     # Click the button
     load_more_button.click()
 
-    # Wait for the new reviews to load (you might need to adjust the time)
+    # Wait for the new reviews to load 
     driver.implicitly_wait(5)
 
     # Once all reviews are loaded, parse the page using BeautifulSoup
@@ -52,46 +53,41 @@ while len(scraped_data) < max_reviews:
 # Close the WebDriver
 driver.quit()
 
+# Create a Pandas DataFrame
+df = pd.DataFrame(scraped_data)
+
 # Data preprocessing
-for i in range(len(scraped_data)):
-    review_text = scraped_data[i]["review_text"]
-    
+def preprocess_text(text):
     # Remove HTML tags
-    review_text = re.sub(r'<.*?>', '', review_text)
+    text = re.sub(r'<.*?>', '', text)
     
     # Remove punctuation and special characters
-    review_text = re.sub(r'[^\w\s]', ' ', review_text)
+    text = re.sub(r'[^\w\s]', ' ', text)
     
     # Convert to lowercase
-    review_text = review_text.lower()
+    text = text.lower()
     
     # Strip leading and trailing whitespace
-    review_text = review_text.strip()
+    text = text.strip()
     
-    scraped_data[i]["review_text"] = review_text
+    return text
+
+# Apply data preprocessing to the "review_text" column
+df['review_text'] = df['review_text'].apply(preprocess_text)
 
 # Deduplicate reviews
-scraped_data = [dict(t) for t in {tuple(d.items()) for d in scraped_data}]
+df.drop_duplicates(subset=['review_text'], keep='first', inplace=True)
 
 # Handle missing data
-scraped_data = [review for review in scraped_data if review["review_text"]]
+df.dropna(subset=['review_text'], inplace=True)
 
 # Only keep the first 500 reviews
-scraped_data = scraped_data[:max_reviews]
+df = df.head(max_reviews)
 
 # Specify the CSV file path
 csv_file = "data/movie_reviews.csv"
 
-# Create or open the CSV file for writing
-with open(csv_file, mode="w", newline="", encoding="utf-8") as file:
-    # Define the CSV writer
-    writer = csv.writer(file)
+# Export the cleaned data to a CSV file
+df.to_csv(csv_file, index=False, encoding="utf-8")
 
-    # Write the header row
-    writer.writerow(["review_text"])
-
-    # Write the data rows
-    for data in scraped_data:
-        writer.writerow([data["review_text"]])
-
-print(f"Scraped and cleaned {len(scraped_data)} reviews, and saved to {csv_file}")
+print(f"Scraped and cleaned {len(df)} reviews, and saved to {csv_file}")
