@@ -75,9 +75,10 @@ Our model has achieved an accuracy of over 90% on the test dataset. For more det
 
 ## Contributors
 
-- [**Aliki Kapasakalidi**](https://github.com/AlikiKap): Sentiment Analysis, Data Visualization, Reporting
-- [**Yingyu Mattila**](https://github.com/C520S): Data Collection and Preprocessing, Sentiment Analysis, Data Visualization, Reporting
-- [**Thuc Nguyen**](https://github.com/thuc-nguyen-oamk): Sentiment Analysis, Data Visualization, Reporting
+- [**Aliki Kapasakalidi**](https://github.com/AlikiKap): Sentiment Analysis, Data Visualization, Sentiment Analysis Model.
+- [**Yingyu Mattila**](https://github.com/C520S):Data Collection, Data Cleaning, Data Storage, Text Preprocessing, 
+Report, Project Related Paperwork.
+- [**Thuc Nguyen**](https://github.com/thuc-nguyen-oamk): Sentiment Analysis, Data Visualization, Sentiment Analysis Model
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details. Feel free to use and modify this project for your needs.
