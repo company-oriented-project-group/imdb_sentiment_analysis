@@ -1,34 +1,3 @@
-# from fastapi import FastAPI, File, UploadFile
-# from fastapi.responses import HTMLResponse
-# import pandas as pd
-# from textblob import TextBlob
-
-# app = FastAPI()
-
-# # Load CSV file
-# df = pd.read_csv("data.csv")
-
-# # Perform sentiment analysis
-# df['sentiment'] = df['review_text'].apply(lambda x: TextBlob(str(x)).sentiment.polarity)
-
-
-# @app.get("/", response_class=HTMLResponse)
-# async def read_root():
-#     return {"message": "Welcome to Sentiment Analysis using FastAPI!"}
-
-
-# @app.post("/uploadfile/")
-# async def create_upload_file(file: UploadFile = File(...)):
-#     df_new = pd.read_csv(file.file)
-#     df_new['sentiment'] = df_new['text'].apply(lambda x: TextBlob(str(x)).sentiment.polarity)
-#     return df_new.to_dict()
-
-
-# @app.get("/sentiment/{text}")
-# async def read_item(text: str):
-#     sentiment_score = TextBlob(text).sentiment.polarity
-#     sentiment_label = "Positive" if sentiment_score > 0 else "Negative" if sentiment_score < 0 else "Neutral"
-#     return {"text": text, "sentiment": sentiment_label, "sentiment_score": sentiment_score}
 
 from fastapi import FastAPI
 from pydantic import BaseModel
