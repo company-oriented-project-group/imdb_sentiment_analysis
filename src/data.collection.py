@@ -87,7 +87,7 @@ df.dropna(subset=['review_text'], inplace=True)
 df = df.head(max_reviews)
 
 # Specify the CSV file path
-csv_file = "data/movie_reviews.csv"
+csv_file = "imdb_data/movie_reviews.csv"
 
 # Export the cleaned data to a CSV file
 df.to_csv(csv_file, index=False, encoding="utf-8")
