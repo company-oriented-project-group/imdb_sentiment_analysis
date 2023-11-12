@@ -30,6 +30,14 @@ Before diving into the details, check out our live demo to see this project in a
 - **Web Interface**: Use the easy-to-use web interface to input your own text and get sentiment analysis results.
 - **Pretrained Model**: The project includes a pretrained model, but you can also train your own with custom data.
 
+## Models
+
+The pre-trained models for this project are stored in the `models` folder. You can download them using the following links:
+
+- [Word2Vec model](https://drive.google.com/uc?id=1c0cmPI2MY-qHW6v6-O8Lg1cJ1c_7FyxH&export=download)
+- [Keras model](https://drive.google.com/uc?id=1YqW4gmslQxV50I4ByrF5zpYPvtJqYSpm&export=download)
+
+
 ## Getting Started
 
 Follow these instructions to get the project up and running on your local machine.

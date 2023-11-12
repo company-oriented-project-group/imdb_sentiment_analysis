@@ -1,0 +1,9 @@
+pandas
+nltk
+gensim
+matplotlib
+seaborn
+scikit-learn
+wordcloud
+dash
+dash-bootstrap-components
