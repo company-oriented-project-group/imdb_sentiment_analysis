@@ -15,7 +15,7 @@ main_tab = dbc.Container(
             children=[
                 dcc.Tab(label='Our Story', value='our-story-container'),
                 dcc.Tab(label='Try The Model', value='try-model-container'),
-                dcc.Tab(label='Your Story', value='your-story-container'),
+                # dcc.Tab(label='Your Story', value='your-story-container'),
         ]),
         dbc.Container(
             id='main-tabs-content',
