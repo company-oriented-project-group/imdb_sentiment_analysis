@@ -2,22 +2,22 @@ from dash import Input, Output
 
 our_story_text_list = [
     "The story begins in 3 seconds",
-    # "The story begins in 2 seconds",
-    # "The story begins in 1 seconds",
-    # "The story begins",
-    # "Accessing the internet...",
-    # "Finding a good labeled training data...",
-    # "Found one on kaggle.com!",
-    # "Applying a mysterious algorithm to train a model...",
-    # "Training the model...",
-    # "Applying speep hack...",
-    # "Training finished!",
-    # "Now, use the trained model to analyze live data...",
-    # "Fetching IMDb reviews...",
-    # "500 reviews fetched!",
-    # "Applying sentiment analysys...",
-    # "Done!",
-    "The result is...",
+    "The story begins in 2 seconds",
+    "The story begins in 1 seconds",
+    "The story begins",
+    "Accessing the internet...",
+    "Finding a good labeled training data...",
+    "Found one on kaggle.com!",
+    "Applying a mysterious algorithm to train a model...",
+    "Training the model...",
+    "Applying speep hack...",
+    "Training finished!",
+    "Now, use the trained model to analyze live data...",
+    "Fetching IMDb reviews...",
+    "500 reviews fetched!",
+    "Applying sentiment analysys...",
+    "Done!",
+   
 ]
 
 def register_our_story_container_callbacks(app):
