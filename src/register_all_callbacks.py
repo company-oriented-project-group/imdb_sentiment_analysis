@@ -1,0 +1,12 @@
+from frontend_components.chart_container_callbacks import register_chart_container_callbacks
+from frontend_components.main_tab_callbacks import register_main_tab_callbacks
+from frontend_components.our_story_container_callbacks import register_our_story_container_callbacks
+from frontend_components.try_model_container_callbacks import register_try_model_container_callbacks
+from frontend_components.your_story_container_callbacks import register_your_story_container_callbacks
+
+def register_all_callbacks(app):
+    register_chart_container_callbacks(app)
+    register_main_tab_callbacks(app)
+    register_our_story_container_callbacks(app)
+    register_try_model_container_callbacks(app)
+    register_your_story_container_callbacks(app)
