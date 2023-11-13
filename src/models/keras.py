@@ -58,7 +58,7 @@ from tensorflow.keras.layers import Activation, Dense, Dropout, Embedding, Flatt
 from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping
 
 def build_the_model():
-    data = pd.read_csv(r'D:\t\Finland\_Company Oriented Project 2\_fix large files\imdb_sentiment_analysis\src\IMDB-example-dataset.csv')
+    data = pd.read_csv('IMDB-example-dataset.csv')
     print(data.info())
     print(data.shape)
     print(data.head())
@@ -236,9 +236,9 @@ def predict(text, include_neutral = True):
 def predict_preparation():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     model_path = os.path.join(script_dir, 'keras.model')
-    # model = tf.keras.models.load_model(model_path)
-    model = tf.keras.models.load_model(r'D:\t\Finland\_Company Oriented Project 2\_fix large files\imdb_sentiment_analysis\src\models\keras.model')
-    data = pd.read_csv(r'D:\t\Finland\_Company Oriented Project 2\_fix large files\imdb_sentiment_analysis\src\IMDB-example-dataset-processed.csv')
+    model = tf.keras.models.load_model(model_path)
+    # model = tf.keras.models.load_model('keras.model')
+    data = pd.read_csv('IMDB-example-dataset-processed.csv')
     train, test = train_test_split(data, test_size = 1 - TRAINING_SIZE, random_state = 84)
     tokenizer = tf.keras.preprocessing.text.Tokenizer()
     tokenizer.fit_on_texts(train.review)
