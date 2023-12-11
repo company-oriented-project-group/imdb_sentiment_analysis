@@ -75,7 +75,7 @@ Our model has achieved an accuracy of over 80% on the test dataset. For more det
 ## Contributors
 
 - [**Aliki Kapasakalidi**](https://github.com/AlikiKap): Sentiment Analysis, Data Visualization, Sentiment Analysis Model.
-- [**Yingyu Mattila**](https://github.com/C520S):Data Collection, Data Cleaning, Data Storage, Text Preprocessing, 
+- [**Yingyu Mattila**](https://github.com/C520S):Data Collection, Data Cleaning, Data Storage, Text Preprocessing, Version control,
 Report, Project Related Paperwork.
 - [**Thuc Nguyen**](https://github.com/thuc-nguyen-oamk): Sentiment Analysis, Data Visualization, Sentiment Analysis Model
 
