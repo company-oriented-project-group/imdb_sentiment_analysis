@@ -32,7 +32,8 @@ The pre-trained models for this project are stored in the `models` folder. You c
 
 However, you can also train your own model using custom data. Details on how to train your model are available in the documentation.
 
-
+## Environment
+- Python 3.8
 ## Getting Started
 
 Follow these instructions to get the project up and running on your local machine.
